@@ -34,7 +34,7 @@ listSum = []
 today = datetime.datetime.now()
 now = today.strftime("%Y-%m-%d")
 
-ini = '/home/ian/Workspace/TekDefense/config.ini'
+ini = 'config.ini'
 sect = 'Regex'
 config = ConfigParser.RawConfigParser()
 config.read(ini)
@@ -51,7 +51,8 @@ if args.url:
 
 if args.file:
     target = args.file
-    dbName = now + '_' + target + '.db'
+    stripSlash = re.sub('/','_', target)
+    dbName = now + '_' + stripSlash + '.db'
 
 if args.database:
     dbName = args.database
